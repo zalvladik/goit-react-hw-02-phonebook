@@ -10,24 +10,14 @@ class App extends React.Component{
       {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
     ],
     filter: '',
-    name: '',
-    number: ''
-  }
-  
-  currentName = (event) =>{
-    const {name,value} = event.currentTarget
-    this.setState({[name]:[value]})
   }
 
-  addNewName = (event) =>{
-    event.preventDefault()
-    
-    if(this.state.contacts.find(option => option.name === `${this.state.name}`)){
-      return alert(`${this.state.name} is already in contact`)
+  newState = (name,number) =>{
+    if(this.state.contacts.find(option => option.name === `${name}`)){
+      return alert(`${name} is already in contact`)
     }
 
     const id = this.state.contacts.length+1
-    const {name,number} = this.state
 
     const updateSlice = [{id: `id-${id}`, name:`${name}`, number:`${number}`}]
     const currentState = this.state.contacts
@@ -54,11 +44,10 @@ class App extends React.Component{
     
     return (
     <PhoneBookContainer
-    currentName={this.currentName}
-    addNewName={this.addNewName}
     events={newState}
     deleteName={this.deleteName}
     filterName={this.filterName}
+    newState={this.newState}
     />
     
   );
