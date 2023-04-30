@@ -20,6 +20,10 @@ class App extends React.Component{
       return alert(`${name} is already in contact`)
     }
 
+    if(this.state.contacts.find(option => option.number === `${number}`)){
+      return alert(`${number} is already in contact`)
+    }
+
     const form = event.currentTarget
       form.reset()
 
@@ -29,7 +33,6 @@ class App extends React.Component{
     const currentState = this.state.contacts
 
     this.setState({contacts:[...currentState,...updateSlice]})
-    console.log(this.state.contacts)
   }
 
   deleteName = (event) =>{
