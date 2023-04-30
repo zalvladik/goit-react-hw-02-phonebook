@@ -1,5 +1,8 @@
-import PhoneBookContainer from './Counter/Counter'
 import React from 'react'
+import ContactForm from './ContactsForm/ContactForm'
+import Filter from './Filter/Filter'
+import ContactsList from './ContactsList/ContactsList'
+import {Container} from './AppStyled'
 
 class App extends React.Component{
   state = {
@@ -12,10 +15,13 @@ class App extends React.Component{
     filter: '',
   }
 
-  newState = (name,number) =>{
-    if(this.state.contacts.find(option => option.name === `${name}`)){
+  newState = (name,number,event) =>{
+    if(this.state.contacts.find(option => option.name.toLowerCase() === `${name}`.toLowerCase())){
       return alert(`${name} is already in contact`)
     }
+
+    const form = event.currentTarget
+      form.reset()
 
     const id = this.state.contacts.length+1
 
@@ -43,13 +49,21 @@ class App extends React.Component{
     const newState = currentState.filter(option => option.name.toLowerCase().includes(`${filter.toLowerCase()}`))
     
     return (
-    <PhoneBookContainer
-    events={newState}
-    deleteName={this.deleteName}
-    filterName={this.filterName}
+      <Container>
+    <h1>PhoneBook</h1>
+    <ContactForm
     newState={this.newState}
     />
     
+    <h2>Contacts</h2>
+    <Filter
+    filterName={this.filterName}
+    />
+    <ContactsList
+    deleteName={this.deleteName}
+    events={newState}
+    /> 
+    </Container>
   );
 }
 };
