@@ -15,7 +15,10 @@ class PhoneBookContainer extends React.Component {
     addNewName = (event) =>{
         const {name,number} = this.state
         event.preventDefault()
-        this.props.newState(name,number,event)
+        this.props.newState(name,number)
+
+        const form = event.currentTarget
+        form.reset()
     }
 
     render(){

@@ -15,7 +15,7 @@ class App extends React.Component{
     filter: '',
   }
 
-  newState = (name,number,event) =>{
+  newState = (name,number) =>{
     if(this.state.contacts.find(option => option.name.toLowerCase() === `${name}`.toLowerCase())){
       return alert(`${name} is already in contact`)
     }
@@ -23,9 +23,6 @@ class App extends React.Component{
     if(this.state.contacts.find(option => option.number === `${number}`)){
       return alert(`${number} is already in contact`)
     }
-
-    const form = event.currentTarget
-      form.reset()
 
     const id = this.state.contacts.length+1
 
@@ -61,6 +58,7 @@ class App extends React.Component{
     <h2>Contacts</h2>
     <Filter
     filterName={this.filterName}
+    filterValue={this.state.filter}
     />
     <ContactsList
     deleteName={this.deleteName}
