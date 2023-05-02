@@ -3,6 +3,7 @@ import ContactForm from './ContactsForm/ContactForm'
 import Filter from './Filter/Filter'
 import ContactsList from './ContactsList/ContactsList'
 import {Container} from './AppStyled'
+import { nanoid } from 'nanoid'
 
 class App extends React.Component{
   state = {
@@ -24,9 +25,7 @@ class App extends React.Component{
       return alert(`${number} is already in contact`)
     }
 
-    const id = this.state.contacts.length+1
-
-    const updateSlice = [{id: `id-${id}`, name:`${name}`, number:`${number}`}]
+    const updateSlice = [{id: `id-${nanoid()}`, name:`${name}`, number:`${number}`}]
     const currentState = this.state.contacts
 
     this.setState({contacts:[...currentState,...updateSlice]})
@@ -36,6 +35,7 @@ class App extends React.Component{
     const currentState = this.state.contacts
     const newState = currentState.filter(option => option.id !== `${event.currentTarget.id}`)
     this.setState({contacts:[...newState]})
+    
   }
 
   filterName = (event) =>{

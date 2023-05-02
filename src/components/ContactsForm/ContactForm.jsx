@@ -1,5 +1,6 @@
 import React from 'react'
 import {Container,Form,Button,Text,InputText} from './ContactFormStyled';
+import PropTypes from 'prop-types'
 
 class PhoneBookContainer extends React.Component { 
 
@@ -50,5 +51,9 @@ class PhoneBookContainer extends React.Component {
     )
     } 
 };
+
+PhoneBookContainer.propTypes = {
+    newState:PropTypes.func.isRequired,
+}
 
 export default PhoneBookContainer
