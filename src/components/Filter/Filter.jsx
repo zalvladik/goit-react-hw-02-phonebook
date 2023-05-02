@@ -21,27 +21,3 @@ Filter.propTypes = {
 }
 
 export default Filter
-
-// class Filter extends React.Component {
-//     state = {
-//         filter: ''
-//     }
-    
-//         render(){
-//         return(
-//             <>
-            
-//             <Text>Find contacts by name</Text>
-//             <InputText
-//             onChange={this.props.filterName}
-//             name="filter"
-//             value={this.state.filter}
-//             />
-//             </>
-//         )
-//     }
-// }
-
-// Filter.propTypes = {
-
-// }

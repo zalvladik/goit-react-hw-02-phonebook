@@ -16,6 +16,7 @@ const ContactsList = ({events,deleteName}) => {
 }
 
 ContactsList.propTypes = {
+    deleteName:PropTypes.func.isRequired,
     events:PropTypes.arrayOf(
         PropTypes.exact({
             id:PropTypes.string.isRequired,
@@ -23,7 +24,6 @@ ContactsList.propTypes = {
             number:PropTypes.string.isRequired,
         })
     ),
-    deleteName:PropTypes.func.isRequired,
 }
 
 
